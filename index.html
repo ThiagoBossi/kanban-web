@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .kanban-wrapper {
+            width: 80%;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: start;
+        }
+
+        .kanban-column {
+            margin: 10px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .card {
+            margin: 5px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            cursor: move;
+        }
+
+        .card-placeholder {
+            background-color: #cce5ff;
+            border: 2px dashed #5a5a5a;
+            height: 50px;
+        }
+
+        .column-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .card-dragged {
+            opacity: 0.7;
+        }
+    </style>
+    <title>Kanban Board</title>
+</head>
+
+<body>
+    <div class="kanban-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="kanban-column" id="01">
+                    <h5 class="column-title">Coluna 01</h5>
+                    <div class="card card-item">Card 1</div>
+                    <div class="card card-item">Card 2</div>
+                    <div class="card card-item">Card 3</div>
+                    <div class="card card-item">Card 4</div>
+                    <div class="card card-item">Card 5</div>
+                </div>
+                <div class="kanban-column" id="02">
+                    <h5 class="column-title">Coluna 02</h5>
+                </div>
+                <div class="kanban-column" id="03">
+                    <h5 class="column-title">Coluna 03</h5>
+                </div>
+                <div class="kanban-column" id="04">
+                    <h5 class="column-title">Coluna 04</h5>
+                </div>
+                <div class="kanban-column" id="05">
+                    <h5 class="column-title">Coluna 05</h5>
+                </div>
+                <div class="kanban-column" id="06">
+                    <h5 class="column-title">Coluna 06</h5>
+                </div>
+                <div class="kanban-column" id="07">
+                    <h5 class="column-title">Coluna 07</h5>
+                </div>
+				<div class="kanban-column" id="08">
+                    <h5 class="column-title">Coluna 08</h5>
+                </div>
+				<div class="kanban-column" id="09">
+                    <h5 class="column-title">Coluna 09</h5>
+                </div>
+				<div class="kanban-column" id="10">
+                    <h5 class="column-title">Coluna 10</h5>
+                </div>
+				<div class="kanban-column" id="11">
+                    <h5 class="column-title">Coluna 11</h5>
+                </div>
+				<div class="kanban-column" id="12">
+                    <h5 class="column-title">Coluna 12</h5>
+                </div>
+				<div class="kanban-column" id="13">
+                    <h5 class="column-title">Coluna 13</h5>
+                </div>
+				<div class="kanban-column" id="14">
+                    <h5 class="column-title">Coluna 14</h5>
+                </div>
+				<div class="kanban-column" id="15">
+                    <h5 class="column-title">Coluna 15</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".kanban-column").sortable({
+                connectWith: ".kanban-column",
+                placeholder: "card-placeholder",
+                start: function (event, ui) {
+                    ui.item.toggleClass("card-dragged", true);
+                },
+                stop: function (event, ui) {
+                    ui.item.toggleClass("card-dragged", false);
+                },
+            });
+
+            $(".card-item").draggable({
+                connectToSortable: ".kanban-column",
+                revert: "invalid",
+                cursor: "move"
+            });
+        });
+    </script>
+</body>
+
+</html>
